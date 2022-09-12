@@ -3,6 +3,9 @@ residencies = "4514, 4582, 6475, 7034, 7880, 7983, 8025, 8040, 8088, 8117, 8127,
 
 residency_number = residencies.split(", ")
 residency_number = residency_number = residencies.split(",")
-for x in residency_number:
-    print(x)
+
+print(type(residency_number))
+
+#for x in residency_number:
+#    print(x)
 #print(residency_number)
