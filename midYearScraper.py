@@ -1,7 +1,9 @@
+
 import requests as req
 from bs4 import BeautifulSoup as bs
 from residencyList import residency_number
 from residencyCredentials import payload, header
+import pandas as pd
 
 #for x in residency_number:
 #   sh root@45.79.52.207print(x)
@@ -30,8 +32,6 @@ Content_span = Content.find_all("span")
 span_text = []
 for i in Content_span:
     span_text.append(i.text)
-
-print('$$$$$$$$$$$$$$$$$$$$$')
  
 print(header_text)
 #for i in range(0,len(Content_h4)):
@@ -39,12 +39,29 @@ print(header_text)
     #print(span_text[i])
     #print('---')
 
-
 residency_dict = dict(zip(h4_text, span_text))
-print(residency_dict)
+#print(residency_dict)
+
+#for key, value in residency_dict.items():
+#        print(key, ' : ', value)
 
 print('$$$$$$$$$$$$$$$$$$$$$')
-for key, value in residency_dict.items():
-        print(key, ' : ', value)
 
-print('$$$$$$$$$$$$$$$$$$$$$')
+df = pd.DataFrame.from_dict([residency_dict], orient = "columns")
+print(df)
+#print(df.info())
+
+#print(df['Type of Program'])
+#print(df['Region'])
+#print(df['Institution'])
+
+#print('$$$$$$$$$$$$$$$$$$$$$')
+df2 = pd.DataFrame.from_dict([residency_dict], orient = "columns")
+df2.append(span_text)
+print(df2)
+#print(df.info())
+
+
+
+
+
